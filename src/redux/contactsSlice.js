@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 //Первинне значення для слайса
 const INITIAL_STATE = {
-    items: []
+    items: [],
+    loading: false,
+    error: null
 };
 
 //створення слайса з значенням і методами
