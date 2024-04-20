@@ -1,5 +1,5 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { fetchContacts, addContact } from "./contactsOps";
+import { fetchContacts, addContact, deleteContact } from "./contactsOps";
 
 const INITIAL_STATE = {
     items: [],
@@ -37,9 +37,21 @@ const contactsSlice = createSlice({
             .addCase(addContact.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
+            })
+            // Видалення контакту
+            .addCase(deleteContact.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(deleteContact.fulfilled, (state, action) => {
+                const deletedContactId = action.payload;
+                state.items = state.items.filter(contact => contact.id !== deletedContactId);
+                state.loading = false;
+                state.error = null;
+            })
+            .addCase(deleteContact.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
             });
-            //Видалення контакту
-            
     }
 });
 
