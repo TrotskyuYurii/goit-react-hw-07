@@ -38,6 +38,8 @@ const contactsSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             });
+            //Видалення контакту
+            
     }
 });
 
