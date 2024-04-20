@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../../redux/contactsSlice";
 import css from "../ContactList/ContactList.module.css";
 
-const ContactList = () => {
+  const ContactList = () => {
   const dispatch = useDispatch();
   const usersContact = useSelector((state) => state.contacts.items);
   const filter = useSelector((state) => state.filters.name.toLowerCase());
