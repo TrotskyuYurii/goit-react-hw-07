@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {fetchContacts} from "./contactsOps"; 
 
 //Первинне значення для слайса
 const INITIAL_STATE = {
