@@ -1,21 +1,17 @@
 import Contact from "../Contact/Contact";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../../redux/contactsSlice";
+import { selectFilteredContacts } from "../../redux/contactsSlice";
 import css from "../ContactList/ContactList.module.css";
 
-  const ContactList = () => {
+const ContactList = () => {
   const dispatch = useDispatch();
-  const usersContact = useSelector((state) => state.contacts.items);
-  const filter = useSelector((state) => state.filters.name.toLowerCase());
+  // Використовуйте мемоізований селектор через useSelector
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   const onDeleteContact = (contactId) => {
     dispatch(deleteContact(contactId));
   };
-
-  // Фільтруємо
-  const filteredContacts = usersContact.filter((contact) =>
-    contact.name.toLowerCase().includes(filter)
-  );
 
   return (
     <div>
