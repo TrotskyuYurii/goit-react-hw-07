@@ -5,6 +5,7 @@ import { addContact } from '../../redux/contactsOps';
 
 import css from "../ContactForm/ContactForm.module.css";
 
+
 const ContactForm = () => {
   const dispatch = useDispatch(); 
 
@@ -14,13 +15,13 @@ const ContactForm = () => {
   };
 
   const handleSubmit = (values, actions) => {
-    // const newContact = {
-    //   name: values.userName,
-    //   number: values.userNumber,
-    //   id: nanoid(),
-    // };
-    console.log(values);
-    dispatch(addContact(values));
+    
+    const newContact = {
+      name: values.userName,
+      number: values.userNumber,
+    };
+    
+    dispatch(addContact(newContact));
     actions.resetForm();
   };
 
@@ -34,6 +35,9 @@ const ContactForm = () => {
       .max(30, `Username must be less than 30 characters!`)
       .min(3, "Username must be more than 3 characters!"),
   });
+
+
+
 
   return (
     <Formik
