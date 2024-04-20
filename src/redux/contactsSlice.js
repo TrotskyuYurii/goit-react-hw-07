@@ -14,17 +14,14 @@ const contactsSlice = createSlice({
         builder
             .addCase(fetchContacts.pending, (state) => {
                 state.loading = true;
-                console.log("pending");
             })
             .addCase(fetchContacts.fulfilled, (state, action) => {
                 state.items = action.payload;
                 state.loading = false;
-                console.log("fulfilled");
             })
             .addCase(fetchContacts.rejected, (state, action) => {
                 state.error = action.payload;
                 state.loading = false;
-                console.log("rejected");
             })
     }
 });
