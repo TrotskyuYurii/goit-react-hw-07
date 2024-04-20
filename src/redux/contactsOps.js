@@ -16,3 +16,29 @@ export const fetchContacts = createAsyncThunk(
       }
     }
   );
+
+  // Додавання контакту
+  export const addContact = createAsyncThunk(
+    'contacts/addContact',
+    async (contact, thunkAPI) => {
+      try {
+        const response = await axios.post(baseURL, contact);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  )
+
+  // Видалення контакту
+  export const deleteContact = createAsyncThunk(
+    'contacts/deleteContact',
+    async (contactId, thunkAPI) => {
+      try {
+        const response = await axios.delete(`${baseURL}/${contactId}`);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  )
