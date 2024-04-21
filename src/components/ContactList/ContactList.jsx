@@ -6,7 +6,6 @@ import css from "../ContactList/ContactList.module.css";
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  // Використовуйте мемоізований селектор через useSelector
   const filteredContacts = useSelector(selectFilteredContacts);
 
   const onDeleteContact = (contactId) => {
